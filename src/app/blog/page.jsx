@@ -6,11 +6,11 @@ import { getPosts } from "@/lib/data";
 const getData = async () => {
   // const res = await fetch("https://blogapp-eight-peach.vercel.app/api/blog", {next:{revalidate:3600}});
 
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
+  // if (!res.ok) {
+  //   throw new Error("Something went wrong");
+  // }
 
-  return res.json();
+  // return res.json();
 };
 
 const BlogPage = async () => {
