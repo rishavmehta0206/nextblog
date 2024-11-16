@@ -5,8 +5,9 @@ import { Suspense } from "react";
 import { getPost } from "@/lib/data";
 
 // FETCH DATA WITH AN API
-const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+const getData = async (blogId) => {
+  // const res = await fetch(`http://localhost:3000/api/blog/${params.blogId}`);
+  const res = await getPost(blogId);
 
   if (!res.ok) {
     throw new Error("Something went wrong");
@@ -16,9 +17,9 @@ const getData = async (slug) => {
 };
 
 export const generateMetadata = async ({ params }) => {
-  const { slug } = params;
+  const { blogId } = params;
 
-  const post = await getPost(slug);
+  const post = await getPost(blogId);
 
   return {
     title: post.title,
@@ -27,10 +28,10 @@ export const generateMetadata = async ({ params }) => {
 };
 
 const SinglePostPage = async ({ params }) => {
-  const { slug } = params;
-
+  const { blogId } = params;
+  console.log(blogId)
   // FETCH DATA WITH AN API
-  const post = await getData(slug);
+  const post = await getPost(blogId);
 
   // FETCH DATA WITHOUT AN API
   // const post = await getPost(slug);

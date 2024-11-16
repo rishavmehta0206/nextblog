@@ -26,10 +26,10 @@ export const getPosts = async () => {
   }
 };
 
-export const getPost = async (slug) => {
+export const getPost = async (blogId) => {
   try {
     connectToDb();
-    const post = await Post.findOne({ slug });
+    const post = await Post.findById(blogId);
     return post;
   } catch (err) {
     console.log(err);
